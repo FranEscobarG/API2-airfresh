@@ -1,0 +1,22 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.sendEmailController = exports.loginUserController = exports.getAllUserController = exports.createUserController = exports.sendEmailToUserUseCase = exports.loginUserUseCase = exports.getAllUseCase = exports.createUserUseCase = exports.mysqlUserRepository = void 0;
+const CreateUserUseCase_1 = require("../application/CreateUserUseCase");
+const GetAllUserUseCase_1 = require("../application/GetAllUserUseCase");
+const LogInUserUseCase_1 = require("../application/LogInUserUseCase");
+const SendEmailToUserUseCase_1 = require("../application/SendEmailToUserUseCase");
+const CreateUserController_1 = require("./controllers/CreateUserController");
+const GetAllUserController_1 = require("./controllers/GetAllUserController");
+const LoginUserController_1 = require("./controllers/LoginUserController");
+const SendEmailController_1 = require("./controllers/SendEmailController");
+const MysqlUserRepository_1 = require("./MysqlUserRepository");
+exports.mysqlUserRepository = new MysqlUserRepository_1.MysqlUserRepository();
+exports.createUserUseCase = new CreateUserUseCase_1.CreateUserUseCase(exports.mysqlUserRepository);
+exports.getAllUseCase = new GetAllUserUseCase_1.GetAllUserUseCase(exports.mysqlUserRepository);
+exports.loginUserUseCase = new LogInUserUseCase_1.LoginUserUseCase(exports.mysqlUserRepository);
+exports.sendEmailToUserUseCase = new SendEmailToUserUseCase_1.SendEmailToUserUseCase(exports.mysqlUserRepository);
+exports.createUserController = new CreateUserController_1.CreateUserController(exports.createUserUseCase);
+exports.getAllUserController = new GetAllUserController_1.GetAllUserController(exports.getAllUseCase);
+exports.loginUserController = new LoginUserController_1.LoginUserController(exports.loginUserUseCase);
+exports.sendEmailController = new SendEmailController_1.SendEmailController(exports.sendEmailToUserUseCase);
+//# sourceMappingURL=dependencies.js.map
